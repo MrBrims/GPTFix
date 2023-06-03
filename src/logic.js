@@ -18,11 +18,11 @@ export async function proccessVoiceMessage(ctx) {
 
     const oggPath = await ogg.create(link.href, userId)
     const mp3Path = await ogg.toMp3(oggPath, userId)
-    removeFile(oggPath)
     const text = await openai.transcription(mp3Path)
-    removeFile(mp3Path)
     await ctx.reply(code(`Ваш запрос: ${text}`))
     await proccessGPTResponse(ctx, text)
+    removeFile(oggPath)
+    removeFile(mp3Path)
   } catch (e) {
     await ctx.reply(
       `Ошибка с API. Скажи админу, чтоб пофиксил. ${e.message}`
