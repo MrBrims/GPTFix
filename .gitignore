@@ -1,0 +1,10 @@
+node_modules
+.vscode
+build
+.DS_Store
+config/default.json
+config/production.json
+.env
+composer.lock
+voices/
+!voices/keep
