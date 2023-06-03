@@ -21,8 +21,8 @@ export async function proccessVoiceMessage(ctx) {
     const text = await openai.transcription(mp3Path)
     await ctx.reply(code(`Ваш запрос: ${text}`))
     await proccessGPTResponse(ctx, text)
-    removeFile(oggPath)
-    removeFile(mp3Path)
+    // removeFile(oggPath)
+    // removeFile(mp3Path)
   } catch (e) {
     await ctx.reply(
       `Ошибка с API. Скажи админу, чтоб пофиксил. ${e.message}`
